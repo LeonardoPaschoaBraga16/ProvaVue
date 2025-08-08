@@ -1,8 +1,7 @@
-// src/store/index.js
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 import axios from 'axios'
 
-export default new Vuex.Store({
+export default createStore({
   state: {
     cep: '',
     endereco: {},
@@ -35,7 +34,12 @@ export default new Vuex.Store({
           commit('setErro', 'CEP não encontrado')
           commit('setEndereco', {})
         } else {
-          commit('setEndereco', response.data)
+          const enderecoTexto = `${response.data.logradouro}, ${response.data.bairro}, ${response.data.localidade} - ${response.data.uf}`
+          const enderecoMapa = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAaassyxFFmwrQ44aQOxOjEgmKxxWlJexg&q=${encodeURIComponent(enderecoTexto)}`
+          commit('setEndereco', {
+            ...response.data,
+            mapa: enderecoMapa
+          })
         }
       } catch {
         commit('setErro', 'Erro ao consultar API')
