@@ -1,28 +1,15 @@
-<!-- src/App.vue -->
 <template>
-  <div id="app">
-    <ConsultaCep />
+  <div>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/consulta-cep">Consulta CEP</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import ConsultaCep from './components/ConsultaCep.vue'
-
 export default {
-  components: {
-    ConsultaCep
-  }
+  name: 'App'
 }
 </script>
-
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
