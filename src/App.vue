@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/">Home</router-link> |
+    <nav class="flex">
+      <router-link to="/">Home</router-link>
       <router-link to="/consulta-cep">Consulta CEP</router-link>
     </nav>
     <router-view />

@@ -2,27 +2,28 @@
   <div class="consulta-cep">
     <h1>Consulta de CEP</h1>
 
-    <input
-      v-model="cepDigitado"
-      placeholder="Digite o CEP"
-      @keyup.enter="buscar"
-    />
-    <button @click="buscar">Buscar</button>
+    <div class="flex input">
+      <input v-model="cepDigitado" placeholder="Digite o CEP" @keyup.enter="buscar"/>
+      <button @click="buscar">Buscar</button>
+    </div>
 
     <p v-if="carregando">Carregando...</p>
     <p v-if="erro" class="erro">{{ erro }}</p>
 
-    <div v-if="endereco.logradouro">
-      <h2>Endereço:</h2>
-      <p><strong>Logradouro:</strong> {{ endereco.logradouro }}</p>
-      <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
-      <p><strong>Cidade:</strong> {{ endereco.localidade }}</p>
-      <p><strong>UF:</strong> {{ endereco.uf }}</p>
+    <div class="flex response" v-if="endereco.logradouro">
+
+      <div>
+        <h2>Endereço:</h2>
+        <p><strong>Logradouro:</strong> {{ endereco.logradouro }}</p>
+        <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
+        <p><strong>Cidade:</strong> {{ endereco.localidade }}</p>
+        <p><strong>UF:</strong> {{ endereco.uf }}</p>
+      </div>
 
       <iframe
         v-if="endereco.mapa"
         :src="endereco.mapa"
-        width="100%"
+        width="40%"
         height="300"
         style="border:0;"
         allowfullscreen=""
@@ -61,21 +62,57 @@ export default {
 </script>
 
 <style scoped>
+
 .consulta-cep {
-  max-width: 500px;
-  margin: auto;
   text-align: center;
 }
+
+.input {
+  justify-content: center;
+  gap: 1rem;
+}
+
 input {
-  width: 80%;
+  width: 20%;
   padding: 8px;
-  margin-top: 10px;
+  border-radius: 5px;
+  background: lightgray;
+  border: none;
 }
+
+.response {
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.response > div {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 button {
-  margin-top: 10px;
   padding: 8px 16px;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  border: unset;
+  cursor: pointer;
 }
+
+button:hover {
+  transition: .2s;
+  background-color: white;
+  color: #333333;
+  border: 1px solid black;
+}
+
 .erro {
   color: red;
+  margin-top: 1rem;
 }
 </style>

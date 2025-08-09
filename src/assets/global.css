@@ -5,6 +5,62 @@
     font-family:  "Inter", sans-serif;
 }
 
+.flex {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #232323;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+#body {
+    margin-top: 1.5rem;
+}
+
+.body > div {
+    justify-content: space-evenly;
+}
+
+.body > div > div {
+    width: 50%;
+    gap: 2rem;
+    align-self: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: .5rem;
+}
+
+a:hover {
+    transition: .2;
+    background: white;
+    border-radius: 5px;
+    color: black;
+}
+
 h1 {
-    font-family: "Inter";
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+p {
+    font-size: 20px;
+}
+
+img {
+    width: 30%;
+}
+
+#description {
+    margin-bottom: 1rem;
 }
